@@ -11,10 +11,10 @@
 [GitHub](https://github.com/docsifyjs/docsify/)
 [Get Started](#quick-start)
 
-<!-- 背景图片 --> 
+<!-- 背景图片 --> 去掉两个“--”即可配置背景色
 
-![](image/1582038956633.jpg) 
+!--[]--(image/1582038956633.jpg) 
 
-<!-- 背景色 --> 
+<!-- 背景色 --> 去掉两个“--”即可配置背景色
 
-!--[color]--(#f0f0f0) 去掉两个“--”即可配置背景色
+!--[color]--(#f0f0f0) 
