@@ -1,34 +1,29 @@
-# [Java核心](/JavaBase/)
+- [Java核心](/JavaBase/)
+  - [成员变量和局部变量的区别](/JavaBase/成员变量和局部变量的区别.md)
+  - [值传递和地址传递问题](/JavaBase/值传递和地址传递问题.md.md)
+  - [JDK8函数式编程](/JavaBase/JDK8函数式编程.md)
+  - [JDK9ReactiveStream](/JavaBase/JDK9ReactiveStream.md)
+  - [JVM深入理解-张龙](/JavaBase/JVM深入理解-张龙.md)
 
-## [成员变量和局部变量的区别](/JavaBase/成员变量和局部变量的区别.md) {docsify-ignore}
+- [常用框架](/PopularFrameworks/)
 
-## [值传递和地址传递问题](/JavaBase/值传递和地址传递问题.md.md) {docsify-ignore}
+- [数据管理](/DataAdministration/)
 
-## [JDK8函数式编程](/JavaBase/JDK8函数式编程.md) {docsify-ignore}
+- [工具类](/toolClass/)
 
-## [JDK9ReactiveStream](/JavaBase/JDK9ReactiveStream.md) {docsify-ignore}
+- [踩坑集合](/bugs/)
 
-## [JVM深入理解-张龙](/JavaBase/JVM深入理解-张龙.md)
+- [分布式架构](/DistributedArchitecture/)
 
-# [常用框架](/PopularFrameworks/)
+- [大数据](/BigData/)
 
-# [数据管理](/DataAdministration/)
+- [部署运维](/DeploymentOperations/)
 
-# [工具类](/toolClass/)
+- [开发工具](/DeveloperKits/)
 
-# [踩坑集合](/bugs/)
+- [前端](/FrontEnd/)
 
-# [分布式架构](/DistributedArchitecture/)
+- [测试](/Test/)
 
-# [大数据](/BigData/)
-
-# [部署运维](/DeploymentOperations/)
-
-# [开发工具](/DeveloperKits/)
-
-# [前端](/FrontEnd/)
-
-# [测试](/Test/)
-
-# [其他](/Other/)
+- [其他](/Other/)
 
