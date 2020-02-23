@@ -21,8 +21,9 @@
       loadNavbar: true,
       //coverpage: true,
 	  loadSidebar: true,
+	  notFoundPage: true,
       search:  {
-	    maxAge: 60000, //缓存时间，默认86400000毫秒一天。
+	    maxAge: 300000, //缓存时间，默认86400000毫秒一天。
         noData: {
 		  '/': '没有结果!',
           '/zh-cn/': '没有结果!',
@@ -34,13 +35,13 @@
           '/zh-cn/': '搜索',
           '/en/': 'Search'
         },
-		depth: 2
+		depth: 3
       },
       noEmoji: true,
       copyCode: {
       	buttonText : '复制到粘贴板',
       	errorText  : '错误',
-      	successText: '已复制'
+      	successText: '复制成功'
       },
       'flexible-alerts': {
       	style: 'flat'
