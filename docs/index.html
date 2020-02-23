@@ -35,11 +35,11 @@
         function(hook, vm) {
           hook.beforeEach(function (html) {
             var url = 'https://github.com/a594645875/jack-docsify/tree/master/docs/' + vm.route.file
-            var editHtml = '[:memo: Edit Document](' + url + ')\n'
+            //var editHtml = '[:memo: Edit Document](' + url + ')\n'
             return html
-			  + '\n----\n'
-              + '> Last Modified {docsify-updated} '
-              + editHtml
+			  //+ '\n----\n'
+              //+ '> Last Modified {docsify-updated} '
+              //+ editHtml
 			  + '\n\n----\n\n'
               + '<a href="http://www.beian.miit.gov.cn/" target="_blank" style="color: inherit; font-weight: normal; text-decoration: none;">粤ICP备20001463号</a>'
           })
