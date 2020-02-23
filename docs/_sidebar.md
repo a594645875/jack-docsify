@@ -1,19 +1,10 @@
-* ## [Java核心](/JavaBase/)
-
-* ## [流行框架](/PopularFrameworks/)
-
-* ## [数据管理](/DataAdministration/)
-
-* ## [分布式架构](/DistributedArchitecture/)
-
-* ## [大数据](/BigData/)
-
-* ## [部署运维](/DeploymentOperations/)
-
-* ## [开发工具](/DeveloperKits/)
-
-* ## [前端](/FrontEnd/)
-
-* ## [其他](/Other/)
-
-* ## [测试](/Test/)
+* [Java核心](/JavaBase/)
+* [流行框架](/PopularFrameworks/)
+* [数据管理](/DataAdministration/)
+* [分布式架构](/DistributedArchitecture/)
+* [大数据](/BigData/)
+* [部署运维](/DeploymentOperations/)
+* [开发工具](/DeveloperKits/)
+* [前端](/FrontEnd/)
+* [其他](/Other/)
+* [测试](/Test/)
