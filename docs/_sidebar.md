@@ -1,34 +1,24 @@
-- [Java核心](/JavaBase/)
-  - [成员变量和局部变量的区别](/JavaBase/成员变量和局部变量的区别.md)
-  - [值传递和地址传递问题](/JavaBase/值传递和地址传递问题.md.md)
-  - [JDK8函数式编程](/JavaBase/JDK8函数式编程.md)
-  - [JDK9ReactiveStream](/JavaBase/JDK9ReactiveStream.md)
+- 标题1
+  - [Java核心](/JavaBase/)
+    - [成员变量和局部变量的区别](/JavaBase/成员变量和局部变量的区别.md)
+    - [值传递和地址传递问题](/JavaBase/值传递和地址传递问题.md.md)
+    - [JDK8函数式编程](/JavaBase/JDK8函数式编程.md)
+    - [JDK9ReactiveStream](/JavaBase/JDK9ReactiveStream.md)
   - [JVM深入理解-张龙](/JavaBase/JVM深入理解-张龙.md)
-
-- [常用框架](/PopularFrameworks/)
-  - [成员变量和局部变量的区别](/JavaBase/成员变量和局部变量的区别.md)
-  - [值传递和地址传递问题](/JavaBase/值传递和地址传递问题.md.md)
-  - [JDK8函数式编程](/JavaBase/JDK8函数式编程.md)
-  - [JDK9ReactiveStream](/JavaBase/JDK9ReactiveStream.md)
-  - [JVM深入理解-张龙](/JavaBase/JVM深入理解-张龙.md)
-
+  - [常用框架](/PopularFrameworks/)
+    - [成员变量和局部变量的区别](/JavaBase/成员变量和局部变量的区别.md)
+    - [值传递和地址传递问题](/JavaBase/值传递和地址传递问题.md.md)
+    - [JDK8函数式编程](/JavaBase/JDK8函数式编程.md)
+    - [JDK9ReactiveStream](/JavaBase/JDK9ReactiveStream.md)
+    - [JVM深入理解-张龙](/JavaBase/JVM深入理解-张龙.md)
 - [数据管理](/DataAdministration/)
-
 - [工具类](/toolClass/)
-
 - [踩坑集合](/bugs/)
-
 - [分布式架构](/DistributedArchitecture/)
-
 - [大数据](/BigData/)
-
 - [部署运维](/DeploymentOperations/)
-
 - [开发工具](/DeveloperKits/)
-
 - [前端](/FrontEnd/)
-
 - [测试](/Test/)
-
 - [其他](/Other/)
 
