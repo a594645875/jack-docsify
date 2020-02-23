@@ -3,7 +3,7 @@
   * [值传递和地址传递问题](/JavaBase/值传递和地址传递问题.md.md) {docsify-ignore}
   * [JDK8函数式编程](/JavaBase/JDK8函数式编程.md) {docsify-ignore}
   * [JDK9ReactiveStream](/JavaBase/JDK9ReactiveStream.md) {docsify-ignore}
-  * [JVM深入理解-张龙](/JavaBase/JVM深入理解-张龙.md)  {docsify-ignore}
+  * [JVM深入理解-张龙](/JavaBase/JVM深入理解-张龙.md)
 * [常用框架](/PopularFrameworks/)
 * [数据管理](/DataAdministration/)
 * [工具类](/toolClass/)
