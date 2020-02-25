@@ -1,0 +1,4 @@
+- [DataAdministration](/DataAdministration/)
+	- [Mysql优化.md](/DataAdministration/Mysql优化.md)
+	- [Redis搭建Redis-Sentinel高可用集群.md](/DataAdministration/Redis搭建Redis-Sentinel高可用集群.md)
+	- [十行代码测试连接数据库.md](/DataAdministration/十行代码测试连接数据库.md)

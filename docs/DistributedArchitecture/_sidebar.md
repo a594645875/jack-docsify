@@ -1,0 +1,2 @@
+- [DistributedArchitecture](/DistributedArchitecture/)
+	- [JTA多数据源的分布式事务解决方案.md](/DistributedArchitecture/JTA多数据源的分布式事务解决方案.md)

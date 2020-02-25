@@ -1,1 +1,2 @@
-### 工具类
+- [toolClass](/toolClass/)
+	- [Java设置全局可用的动态参数.md](/toolClass/Java设置全局可用的动态参数.md)

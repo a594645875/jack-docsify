@@ -1,1 +1,8 @@
-### 其他知识
+- [Other](/Other/)
+	- [7大设计原则.md](/Other/7大设计原则.md)
+	- [Mac终端连接远程服务器时间长无反应.md](/Other/Mac终端连接远程服务器时间长无反应.md)
+	- [UML结构详解.md](/Other/UML结构详解.md)
+	- [个人博客Docsify安装和使用.md](/Other/个人博客Docsify安装和使用.md)
+	- [单例模式特辑.md](/Other/单例模式特辑.md)
+	- [工作经验总结.md](/Other/工作经验总结.md)
+	- [设计模式概念.md](/Other/设计模式概念.md)
