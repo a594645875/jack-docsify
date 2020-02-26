@@ -1,6 +1,6 @@
 # JVM——内存结构
 
-![](https://note.youdao.com/yws/public/resource/645f12f2d7721a2961eec0f980f92af9/xmlnote/32160D87D28A415181750A10E70BE70F/22)
+![](../image/JVM架构.png)
 
 - 程序计数器
 - 虚拟机栈
@@ -213,6 +213,7 @@ Heap 堆
    ```
 
 4. jvisualvm 工具
+   
    - 可以dump出内存快照之后，进行内存分析，筛选出最大的20个对象
 
 ## 5. 方法区
@@ -226,7 +227,7 @@ Heap 堆
 
 ### 5.2 组成
 
-![](https://note.youdao.com/yws/public/resource/645f12f2d7721a2961eec0f980f92af9/xmlnote/AF77E4AD7B1A410E9020B250DC718037/21)
+![](../image/方法区.png)
 
 - JDK1.6及之前，方法区存放在永久代（PermGen）中，包括运行时常量池（含StringTable）、Class、ClassLoader
 

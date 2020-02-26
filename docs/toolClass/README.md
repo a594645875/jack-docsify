@@ -1,2 +1,3 @@
-# 工具类
-微信公众号，表格导出导入
+- [toolClass](/toolClass/)
+	- [Java设置全局可用的动态参数](/toolClass/Java设置全局可用的动态参数.md)
+	- [更新侧边栏工具类](/toolClass/更新侧边栏工具类.md)

@@ -21,7 +21,7 @@
 
 ### 1.3 四种引用
 
-![](https://note.youdao.com/yws/public/resource/645f12f2d7721a2961eec0f980f92af9/xmlnote/73DD96123A5B4F8097D2820CD1779EBA/37)
+![](../image/5种引用.png)
 
 1. 强引用
 
@@ -111,27 +111,28 @@
    - 必须配合引用队列使用，主要配合 ByteBuffffer 使用，被引用对象回收时，会将虚引用入队，由 Reference Handler 线程调用虚引用相关方法释放直接内存
 
 5. 终结器引用（FinalReference）
+   
    - 无需手动编码，但其内部配合引用队列使用，在垃圾回收时，终结器引用入队（被引用对象暂时没有被回收），再由 Finalizer 线程通过终结器引用找到被引用对象并调用它的 fifinalize方法，第二次 GC 时才能回收被引用对象
 
 ## 2. 垃圾回收算法
 
 ### 2.1 标记清除 Mark Sweep
 
-![](https://note.youdao.com/yws/public/resource/645f12f2d7721a2961eec0f980f92af9/xmlnote/CD4CD4F8E6DB4A38908D19221DC37816/53)
+![](../image/标记清除.png)
 
 - 速度较快
 - 内存碎片化，有大对象时可能无法插入
 
 ### 2.2 标记整理 Mark Compact
 
-![](https://note.youdao.com/yws/public/resource/645f12f2d7721a2961eec0f980f92af9/xmlnote/60EFED53B0D648C9B964EF72B116CEAA/54)
+![](../image/标记整理.png)
 
 - 速度慢
 - 不会有内存碎片
 
 ### 2.3 复制 Copy
 
-![](https://note.youdao.com/yws/public/resource/645f12f2d7721a2961eec0f980f92af9/xmlnote/4114CFDE5EDD41EF844D19D53A1F9DB4/56)
+![](../image/复制.png)
 
 - 速度快
 - 不会有内存碎片
@@ -139,7 +140,7 @@
 
 ## 3. 分代垃圾回收
 
-![](https://note.youdao.com/yws/public/resource/645f12f2d7721a2961eec0f980f92af9/xmlnote/1B9B16E02EDD483C97110F65D28DD1E5/55)
+![](../image/分代垃圾回收.png)
 
 ### 3.1 定义特性
 
@@ -171,7 +172,7 @@
 
 ### 4.1 串行
 
-![](https://note.youdao.com/yws/public/resource/645f12f2d7721a2961eec0f980f92af9/xmlnote/C931EA39EE064DB8B77230E7EFF35447/60)
+![](../image/串行.png)
 
 - 单线程
 
@@ -181,7 +182,7 @@
 
 ### 4.2 吞吐量优先
 
-![](https://note.youdao.com/yws/public/resource/645f12f2d7721a2961eec0f980f92af9/xmlnote/96E1CEB462C54255B98695373BEA66D7/62)
+![](../image/吞吐量优先.png)
 
 - 让单位时间内，STW 的时间最短（0.2 + 0.2 = 0.4），垃圾回收时间占比最低，这样就称吞吐量高
 
@@ -196,7 +197,7 @@
 
 ### 4.3 响应时间优先
 
-![](https://note.youdao.com/yws/public/resource/645f12f2d7721a2961eec0f980f92af9/xmlnote/3B91544377754C368670827F8E2AF308/65)
+![](../image/响应时间优先.png)
 
 - 多线程
 - 堆内存较大，多核 cpu
@@ -212,6 +213,8 @@
   ```
 
 ### 4.4 G1 Garbage First
+
+![](../image/G1.png)
 
 - 同时注重吞吐量（Throughput）和低延迟（Low latency），默认的暂停目标是 200 ms
 - 超大堆内存，会将堆划分为多个大小相等的`Region`
