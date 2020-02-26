@@ -1,7 +1,7 @@
 - [JavaBase](/JavaBase/)
 	- [HashMap底层原理面试题.md](/JavaBase/HashMap底层原理面试题.md)
 	- [Java8获得特殊日期.md](/JavaBase/Java8获得特殊日期.md)
-	- [Java__和___的区别.md](/JavaBase/Java__和___的区别.md)
+	- [Java\>\>和\>\>\>的区别.md](/JavaBase/Java\>\>和\>\>\>的区别.md)
 	- [java中的_=、&=、^=.md](/JavaBase/java中的_=、&=、^=.md)
 	- [JDK8函数式编程.md](/JavaBase/JDK8函数式编程.md)
 	- [JDK9ReactiveStream.md](/JavaBase/JDK9ReactiveStream.md)
