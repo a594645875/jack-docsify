@@ -68,8 +68,102 @@
 
 ### 9.2 常用锁
 
-- Synchronized
-- ReentrantLock
-- ReadWriteLock
-- Semaphore
-- AtomicInteger
+#### 9.2.1 Synchronized
+
+synchronized 它可以把任意一个非 NULL 的对象当作锁。 他属于独占式的悲观锁，同时属于可重
+入锁。
+
+**Synchronized 作用范围**  
+
+1. 作用于方法时，锁住的是对象的实例(this)；
+
+2. 当作用于静态方法时，锁住的是Class实例，又因为Class的相关数据存储在永久带PermGen（jdk1.8 则是 metaspace），永久带是全局共享的，因此静态方法锁相当于类的一个全局锁，会锁所有调用该方法的线程；
+
+3. synchronized 作用于一个对象实例时，锁住的是所有以该对象为锁的代码块。 它有多个队列，当多个线程一起访问某个对象监视器的时候，对象监视器会将这些线程存储在不同的容器中。
+
+**实战**
+
+synchronized可重入锁验证
+
+```java
+public class MyLockTest implements Runnable {
+    public synchronized void get() {
+        System.out.println(Thread.currentThread().getName() + " get方法体开始");
+        set();
+        System.out.println(Thread.currentThread().getName() + " get方法体结束");
+    }
+    public synchronized void set() {
+        System.out.println(Thread.currentThread().getName() + " set方法体 ");
+    }
+    @Override
+    public void run() {
+        System.out.println(Thread.currentThread().getName() + " 开启线程，即将执行get方法");
+        get();
+    }
+    public static void main(String[] args) {
+        MyLockTest test = new MyLockTest();
+        for (int i = 0; i < 10; i++) {
+            new Thread(test, "thread-" + i).start();
+        }
+    }
+}
+```
+
+运行结果
+
+```shell
+thread-0 开启线程，即将执行get方法
+thread-1 开启线程，即将执行get方法
+thread-0 get方法体开始
+thread-0 set方法体 
+thread-0 get方法体结束
+thread-3 开启线程，即将执行get方法
+thread-2 开启线程，即将执行get方法
+thread-1 get方法体开始
+thread-1 set方法体 
+thread-1 get方法体结束
+thread-2 get方法体开始
+thread-2 set方法体 
+thread-2 get方法体结束
+thread-3 get方法体开始
+thread-3 set方法体 
+thread-3 get方法体结束
+thread-5 开启线程，即将执行get方法
+thread-5 get方法体开始
+thread-5 set方法体 
+thread-5 get方法体结束
+thread-6 开启线程，即将执行get方法
+thread-6 get方法体开始
+thread-6 set方法体 
+thread-6 get方法体结束
+thread-7 开启线程，即将执行get方法
+thread-7 get方法体开始
+thread-7 set方法体 
+thread-7 get方法体结束
+thread-9 开启线程，即将执行get方法
+thread-9 get方法体开始
+thread-9 set方法体 
+thread-9 get方法体结束
+thread-4 开启线程，即将执行get方法
+thread-4 get方法体开始
+thread-4 set方法体 
+thread-4 get方法体结束
+thread-8 开启线程，即将执行get方法
+thread-8 get方法体开始
+thread-8 set方法体 
+thread-8 get方法体结束
+```
+
+- get()方法中顺利进入了set()方法，说明synchronized的确是可重入锁。
+
+- 分析打印Log，thread-1、thread-0同时启动，thread-0先进入get方法体，这个时候thread-1等待进入
+- 没有按照thread-7、thread-8、thread-9的顺序进入get方法体，说明sychronized的确是非公平锁。
+- 在一个线程进入get方法体后，其他线程只能等待，无法同时进入，验证了synchronized是独占锁。
+
+#### 9.2.2 ReentrantLock
+
+#### 9.2.3 ReadWriteLock
+
+#### 9.2.4 Semaphore
+
+#### 9.2.5 AtomicInteger
