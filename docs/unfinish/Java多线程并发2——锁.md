@@ -162,8 +162,284 @@ thread-8 get方法体结束
 
 #### 9.2.2 ReentrantLock
 
+ReentrantLock既可以构造公平锁又可以构造非公平锁，默认为非公平锁，将上面的代码改为用ReentrantLock实现，再次运行。
+
+```java
+public class ReentrantTest implements Runnable{
+    private ReentrantLock reentrantLock = new ReentrantLock();
+    public void get() {
+        reentrantLock.lock();
+        System.out.println(Thread.currentThread().getName() + " get方法体开始");
+        set();
+        System.out.println(Thread.currentThread().getName() + " get方法体结束");
+        reentrantLock.unlock();//实际使用中，应该放在finally代码块里
+    }
+    public void set() {
+        reentrantLock.lock();
+        System.out.println(Thread.currentThread().getName() + " set方法体");
+        reentrantLock.unlock();//实际使用中，应该放在finally代码块里
+    }
+    @Override
+    public void run() {
+        System.out.println(Thread.currentThread().getName() + " 线程启动");
+        get();
+    }
+    public static void main(String[] args) {
+        ReentrantTest test = new ReentrantTest();
+        for (int i = 0; i < 10; i++) {
+            new Thread(test, "thread->" + i).start();
+        }
+    }
+}
+```
+
+运行结果
+
+```
+thread->0 线程启动
+thread->2 线程启动
+thread->1 线程启动
+thread->0 get方法体开始
+thread->0 set方法体
+thread->0 get方法体结束
+thread->2 get方法体开始
+thread->2 set方法体
+thread->2 get方法体结束
+thread->1 get方法体开始
+thread->1 set方法体
+thread->1 get方法体结束
+thread->3 线程启动
+thread->3 get方法体开始
+thread->3 set方法体
+thread->4 线程启动
+thread->3 get方法体结束
+thread->4 get方法体开始
+thread->4 set方法体
+thread->4 get方法体结束
+thread->5 线程启动
+thread->5 get方法体开始
+thread->5 set方法体
+thread->5 get方法体结束
+thread->8 线程启动
+thread->8 get方法体开始
+thread->8 set方法体
+thread->8 get方法体结束
+thread->9 线程启动
+thread->9 get方法体开始
+thread->9 set方法体
+thread->9 get方法体结束
+thread->6 线程启动
+thread->6 get方法体开始
+thread->6 set方法体
+thread->6 get方法体结束
+thread->7 线程启动
+thread->7 get方法体开始
+thread->7 set方法体
+thread->7 get方法体结束
+```
+
+可重入锁，非公平锁，实锤了！
+
+改成公平锁只需要在构造的时候传入true值
+
+```java
+ReentrantLock reentrantLock = new ReentrantLock(true);
+```
+
 #### 9.2.3 ReadWriteLock
 
-#### 9.2.4 Semaphore
+Java并发包中ReadWriteLock是一个接口，主要有两个方法readLock()，writeLock()；
 
-#### 9.2.5 AtomicInteger
+ReetrantReadWriteLock实现了ReadWriteLock接口并添加了可重入的特性。
+
+```java
+public class ReadAndWriteLockTest {
+
+    public static void get(Thread thread) {
+        ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+        lock.readLock().lock();
+        System.out.println("start time:" + System.currentTimeMillis());
+        for (int i = 0; i < 5; i++) {
+            try {
+                Thread.sleep(20);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(thread.getName() + ":正在进行读操作……");
+        }
+        System.out.println(thread.getName() + ":读操作完毕！");
+        System.out.println("end time:" + System.currentTimeMillis());
+        lock.readLock().unlock();
+    }
+    public static void main(String[] args) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                get(Thread.currentThread());
+            }
+        }).start();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                get(Thread.currentThread());
+            }
+        }).start();
+    }
+}
+```
+
+读写锁有两种加锁方法，读锁的时候可以有多个线程共同持有。
+
+既然可以多条线程共同持有，那么读锁和不加锁有什么区别？
+
+模拟100人抢5件商品，作死不加锁：
+
+```java
+public class ReadLockTest implements Runnable {
+    private int count = 5;
+    public static void main(String[] args) {
+        ReadLockTest test = new ReadLockTest();
+        long start = System.currentTimeMillis();
+        for (int i = 0; i < 100; i++) {
+            new Thread(test, "Thread->" + i).start();
+        }
+        System.out.println("耗时："+ (System.currentTimeMillis() - start )+ "ms");
+    }
+    public void countDown() {
+        if (count > 0) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(Thread.currentThread().getName()+"抢到了"+count+"号商品");
+            count--;
+        }
+        if (count < 0) {
+            System.out.println(Thread.currentThread().getName() + "超卖了！" + count);
+        }
+    }
+
+    @Override
+    public void run() {
+        long start = System.currentTimeMillis();
+        countDown();
+        System.out.println("耗时："+ (System.currentTimeMillis() - start )+ "ms");
+    }
+}
+```
+
+结果。。。超卖了93件特价商品，赶紧删库跑路！
+
+```java
+...
+超卖了！-93
+```
+
+不加锁的后果很严重，那么加读锁呢？
+
+```java
+public class ReadLockTest implements Runnable {
+    private int count = 5;
+    private ReadWriteLock lock = new ReentrantReadWriteLock();
+    
+    public static void main(String[] args) {
+        ReadLockTest test = new ReadLockTest();
+        long start = System.currentTimeMillis();
+        for (int i = 0; i < 100; i++) {
+            new Thread(test, "Thread->" + i).start();
+        }
+        System.out.println("耗时："+ (System.currentTimeMillis() - start )+ "ms");
+    }
+    public void countDown() {
+        lock.readLock().lock();
+        if (count > 0) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(Thread.currentThread().getName()+"抢到了"+count+"号商品");
+            count--;
+        }
+        lock.readLock().unlock();
+        if (count < 0) {
+            System.out.println(Thread.currentThread().getName() + "超卖了！" + count);
+        }
+    }
+
+    @Override
+    public void run() {
+        long start = System.currentTimeMillis();
+        countDown();
+        System.out.println("耗时："+ (System.currentTimeMillis() - start )+ "ms");
+    }
+}
+```
+
+结果，呵呵。。。超卖95！这和不加锁没区别好吧！赶紧删库。
+
+```
+...
+超卖了！-95
+```
+
+老老实实加写锁吧
+
+```java
+public class ReadLockTest implements Runnable {
+    private int count = 5;
+    private ReadWriteLock lock = new ReentrantReadWriteLock();
+
+    public static void main(String[] args) {
+        ReadLockTest test = new ReadLockTest();
+        long start = System.currentTimeMillis();
+        for (int i = 0; i < 100; i++) {
+            new Thread(test, "Thread->" + i).start();
+        }
+        System.out.println("耗时："+ (System.currentTimeMillis() - start )+ "ms");
+    }
+    public void countDown() {
+        lock.writeLock().lock();
+        if (count > 0) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(Thread.currentThread().getName()+"抢到了"+count+"号商品");
+            count--;
+        }
+        lock.writeLock().unlock();
+        if (count < 0) {
+            System.out.println(Thread.currentThread().getName() + "超卖了！" + count);
+        }
+    }
+
+    @Override
+    public void run() {
+        long start = System.currentTimeMillis();
+        countDown();
+        System.out.println("耗时："+ (System.currentTimeMillis() - start )+ "ms");
+    }
+}
+```
+
+这次终于不用删库跑路了。
+
+```
+耗时：12ms
+Thread->0抢到了5号商品
+耗时：1005ms
+Thread->1抢到了4号商品
+耗时：2013ms
+Thread->2抢到了3号商品
+耗时：3013ms
+Thread->3抢到了2号商品
+耗时：4013ms
+Thread->4抢到了1号商品
+耗时：5014ms
+耗时：4994ms //其他的线程都是5秒左右结束
+```
+
