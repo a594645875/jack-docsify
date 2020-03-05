@@ -1,6 +1,6 @@
 ## 1. JAVA并发包架构
 
-![](C:\Users\chenzecheng\Desktop\document\study\jack-docsify\docs\image\线程基础并发包.png)
+![](..\image\线程基础并发包.png)
 
 ## 2. 线程实现/创建方式
 
@@ -84,7 +84,7 @@ public class PoolTest {
 Executor是线程池的顶级接口，但严格来说只是执行线程的工具，不是线程池。
 ExecutorService是真正的线程池接口。
 
-![](C:\Users\chenzecheng\Desktop\document\study\jack-docsify\docs\image\线程池UML.png)
+![](..\image\线程池UML.png)
 
 ### 3.1newCachedThreadPool 
 
@@ -124,7 +124,7 @@ public class SchedulePoolTest {
 
 ## 4. 线程的生命周期
 
-![](C:\Users\chenzecheng\Desktop\document\study\jack-docsify\docs\image\线程的生命周期.png)
+![](..\image\线程的生命周期.png)
 
 ## 5. 终止线程的4种方法
 
