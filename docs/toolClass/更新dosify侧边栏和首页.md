@@ -1,13 +1,4 @@
 ```java
-package top.czcheng.test.utils;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @Author czc
  * @Date 2020/2/25 22:48
@@ -22,15 +13,39 @@ public class DocsifyAuto {
         if (array == null) {
             return;
         }
+        List<IndexMsg> indexMsgs = new ArrayList<>();
         for (File subfile : array) {
+            if ("unfinish".equals(subfile.getName())) {
+                continue;
+            }
             //如果是文件夹
             if (subfile.isDirectory()) {
-                recreateSidebar(subfile);
+                recreateSidebar(subfile,indexMsgs);
                 //reNameFile(subfile);
 
             }
         }
+        //拼接首页Index，文章列表
+        reflashIndex(rootPath,indexMsgs);
+    }
 
+    private static void reflashIndex(String rootPath,List<IndexMsg> indexMsgs) {
+        String path = rootPath + "\\README.md";
+        StringBuilder builder = new StringBuilder();
+        builder.append("# [Jackson's Java之旅](/)\n");
+        builder.append("## 最新文章\n");
+        List<IndexMsg> collect = indexMsgs.stream().sorted(Comparator.comparing(IndexMsg::getLastModify).reversed()).collect(Collectors.toList());
+        collect.forEach(x -> builder.append("- [").append(x.getDocName().replace(".md", ""))
+                .append("](/").append(x.getDirName()).append("/").append(x.getDocName()).append(")\t")
+                .append("修改于")
+                .append(LocalDateTime.ofEpochSecond(x.getLastModify() / 1000, 0,
+                        ZoneOffset.ofHours(8)).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+                .append("\n"));
+        try (PrintStream sidebarStream = new PrintStream(path)) {
+            sidebarStream.print(builder.toString());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -54,7 +69,7 @@ public class DocsifyAuto {
         }
     }
 
-    private static void recreateSidebar(File subfile) {
+    private static void recreateSidebar(File subfile,List<IndexMsg> indexMsgs) {
         File[] docList = subfile.listFiles();
         if (docList == null) {
             return;
@@ -71,6 +86,7 @@ public class DocsifyAuto {
                 if (doc.getName().contains(" ")) {
                     System.out.println(doc.getName().replace(" ", ""));
                 }
+                indexMsgs.add(new IndexMsg(doc.getName(),doc.lastModified(),subfile.getName()));
                 docNameList.add(doc.getName());
             }
         }
@@ -103,6 +119,15 @@ public class DocsifyAuto {
         return builder.toString();
     }
 
+    @Data
+    @AllArgsConstructor
+    static class IndexMsg{
+        private String docName;
+        private long lastModify;
+        private String dirName;
+    }
+
 }
+
 ```
 
