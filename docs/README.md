@@ -1,7 +1,8 @@
 # [Jackson's Java之旅](/)
 ## 最新文章
-- [TCP滑动窗口机制](/network/TCP滑动窗口机制.md)
+- [部署在docke容器中的软件没有按时运行](/bugs/部署在docke容器中的软件没有按时运行.md)
 - [更新dosify侧边栏和首页](/toolClass/更新dosify侧边栏和首页.md)
+- [TCP滑动窗口机制](/network/TCP滑动窗口机制.md)
 - [Java多线程并发1——线程实现和线程池](/JavaBase/Java多线程并发1——线程实现和线程池.md)
 - [Java多线程并发2——锁](/JavaBase/Java多线程并发2——锁.md)
 - [JVM学习笔记1——内存结构](/JavaBase/JVM学习笔记1——内存结构.md)
@@ -52,7 +53,6 @@
 - [JwtFilter鉴权一直无权限](/bugs/JwtFilter鉴权一直无权限.md)
 - [wevpack打包时出错](/bugs/wevpack打包时出错.md)
 - [@JsonField不生效](/bugs/@JsonField不生效.md)
-- [部署在`docke`容器中的软件没有按时运行](/bugs/部署在`docke`容器中的软件没有按时运行.md)
 - [maven导入本地jar包部署后类缺失](/bugs/maven导入本地jar包部署后类缺失.md)
 - [使用Feign的时候参数问题](/bugs/使用Feign的时候参数问题.md)
 - [nginx配置文件一直不生效](/bugs/nginx配置文件一直不生效.md)
