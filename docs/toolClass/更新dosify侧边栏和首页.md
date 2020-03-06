@@ -1,13 +1,8 @@
 ```java
-/**
- * @Author czc
- * @Date 2020/2/25 22:48
- * @Version 1.0
- */
 public class DocsifyAuto {
 
     public static void main(String[] args) throws IOException {
-        String rootPath = "C:\\Users\\chenzecheng\\Desktop\\document\\study\\jack-docsify\\docs";
+        String rootPath = "/Users/jackson/Documents/study/jack-docsify/docs";
         File file = new File(rootPath);
         File[] array = file.listFiles();
         if (array == null) {
@@ -20,6 +15,7 @@ public class DocsifyAuto {
             }
             //如果是文件夹
             if (subfile.isDirectory()) {
+                //更新每个文件夹的侧边栏和主页
                 recreateSidebar(subfile,indexMsgs);
                 //reNameFile(subfile);
 
@@ -30,17 +26,17 @@ public class DocsifyAuto {
     }
 
     private static void reflashIndex(String rootPath,List<IndexMsg> indexMsgs) {
-        String path = rootPath + "\\README.md";
+        String path = rootPath + "/README.md";
         StringBuilder builder = new StringBuilder();
         builder.append("# [Jackson's Java之旅](/)\n");
         builder.append("## 最新文章\n");
         List<IndexMsg> collect = indexMsgs.stream().sorted(Comparator.comparing(IndexMsg::getLastModify).reversed()).collect(Collectors.toList());
         collect.forEach(x -> builder.append("- [").append(x.getDocName().replace(".md", ""))
-                .append("](/").append(x.getDirName()).append("/").append(x.getDocName()).append(")\t")
-                .append("修改于")
-                .append(LocalDateTime.ofEpochSecond(x.getLastModify() / 1000, 0,
-                        ZoneOffset.ofHours(8)).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
-                .append("\n"));
+                .append("](/").append(x.getDirName()).append("/").append(x.getDocName()).append(")\n"));
+//                .append("修改于")
+//                .append(LocalDateTime.ofEpochSecond(x.getLastModify() / 1000, 0,
+//                        ZoneOffset.ofHours(8)).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+//                .append("\n"));
         try (PrintStream sidebarStream = new PrintStream(path)) {
             sidebarStream.print(builder.toString());
         } catch (FileNotFoundException e) {
@@ -91,8 +87,8 @@ public class DocsifyAuto {
             }
         }
         String sidebar = toSidebar(subfile.getName(), docNameList);
-        String sidebarPath = subfile.getAbsolutePath() + "\\_sidebar.md";
-        String readmePath = subfile.getAbsolutePath() + "\\README.md";
+        String sidebarPath = subfile.getAbsolutePath() + "/_sidebar.md";
+        String readmePath = subfile.getAbsolutePath() + "/README.md";
         try (PrintStream sidebarStream = new PrintStream(sidebarPath);
              PrintStream readmeStream = new PrintStream(readmePath)) {
             sidebarStream.print(sidebar);
@@ -112,7 +108,13 @@ public class DocsifyAuto {
      */
     private static String toSidebar(String directoryName, List<String> docNameList) {
         StringBuilder builder = new StringBuilder();
-        builder.append("- [").append(directoryName).append("](/").append(directoryName).append("/)\n");
+        String directoryCnName = directoryName;
+        for (DocsifyEnum value : DocsifyEnum.values()) {
+            if (value.getEnName().equalsIgnoreCase(directoryName)) {
+                directoryCnName = value.getCnName();
+            }
+        }
+        builder.append("- [").append(directoryCnName).append("](/)\n");
         for (String docName : docNameList) {
             builder.append("\t").append("- [").append(docName.replace(".md","")).append("](/").append(directoryName).append("/").append(docName).append(")\n");
         }
@@ -128,6 +130,5 @@ public class DocsifyAuto {
     }
 
 }
-
 ```
 

@@ -1,2 +1,2 @@
-- [FrontEnd](/FrontEnd/)
+- [前端](/)
 	- [Vue之vue-cli安装](/FrontEnd/Vue之vue-cli安装.md)
