@@ -1,8 +1,0 @@
-- [unfinish](/unfinish/)
-	- [(未完成)极客时间杨晓峰-java核心技术36讲](/unfinish/(未完成)极客时间杨晓峰-java核心技术36讲.md)
-	- [@Transation的用法（待完成）](/unfinish/@Transation的用法（待完成）.md)
-	- [Java多线程并发1——线程实现和线程池](/unfinish/Java多线程并发1——线程实现和线程池.md)
-	- [Java多线程并发2——锁](/unfinish/Java多线程并发2——锁.md)
-	- [JVM深入理解-张龙（未完成）](/unfinish/JVM深入理解-张龙（未完成）.md)
-	- [Mybatis插入json数据到pgsql（未完成）](/unfinish/Mybatis插入json数据到pgsql（未完成）.md)
-	- [Zookeeper两大功能（未完成）](/unfinish/Zookeeper两大功能（未完成）.md)
