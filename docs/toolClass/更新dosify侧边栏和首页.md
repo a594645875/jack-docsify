@@ -17,12 +17,15 @@ public class DocsifyAuto {
             if (subfile.isDirectory()) {
                 //更新每个文件夹的侧边栏和主页
                 recreateSidebar(subfile,indexMsgs);
+
                 //reNameFile(subfile);
 
             }
         }
+        System.out.println("更新侧边栏和主页完成。");
         //拼接首页Index，文章列表
         reflashIndex(rootPath,indexMsgs);
+        System.out.println("更新主页最新文章完成。");
     }
 
     private static void reflashIndex(String rootPath,List<IndexMsg> indexMsgs) {
@@ -70,8 +73,11 @@ public class DocsifyAuto {
         if (docList == null) {
             return;
         }
+        //根据修改时间倒序
+        //List<File> collect = Arrays.stream(docList).sorted(Comparator.comparing(File::lastModified).reversed()).collect(Collectors.toList());
+        List<File> collect = Arrays.stream(docList).sorted(Comparator.comparing(File::getName)).collect(Collectors.toList());
         List<String> docNameList = new ArrayList<>();
-        for (File doc : docList) {
+        for (File doc : collect) {
             if ("_sidebar.md".equalsIgnoreCase(doc.getName())) {
                 doc.delete();
             } else if ("readme.md".equalsIgnoreCase(doc.getName())) {
