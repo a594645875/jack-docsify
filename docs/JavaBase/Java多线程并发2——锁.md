@@ -443,3 +443,100 @@ Thread->4抢到了1号商品
 耗时：4994ms //其他的线程都是5秒左右结束
 ```
 
+#### 9.2.4 CountDownLatch
+
+当计数器值到达0时，在闭锁上等待的线程就可以恢复执行任务。
+
+```java
+public static void main(String[] args) throws InterruptedException {
+		CountDownLatch countDownLatch = new CountDownLatch(2);
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				System.out.println(Thread.currentThread().getName() + ",子线程开始执行...");
+				countDownLatch.countDown();
+                try {
+                	Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+				System.out.println(Thread.currentThread().getName() + ",子线程结束执行...");
+			}
+		}).start();
+		
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				System.out.println(Thread.currentThread().getName() + ",子线程开始执行...");
+				countDownLatch.countDown();//计数器值每次减去1
+                try {
+                	Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+				System.out.println(Thread.currentThread().getName() + ",子线程结束执行...");
+			}
+		}).start();
+    	// 減至为0,恢复任务继续执行
+		countDownLatch.await();
+	    System.out.println("主线程继续执行.....");
+	    for (int i = 0; i <10; i++) {
+			System.out.println("main,i:"+i);
+		}
+	}
+```
+
+#### 9.2.5 CyclicBarrier
+
+CyclicBarrier初始化时规定一个数目，然后计算调用了CyclicBarrier.await()进入等待的线程数。当线程数达到了这个数目时，所有进入等待状态的线程被唤醒并继续。 
+
+CyclicBarrier初始时还可带一个Runnable的参数， 此Runnable任务在CyclicBarrier的数目达到后，所有其它线程被唤醒前被执行。
+
+```java
+public class CyclicBarrierTest {
+    public static void main(String[] args) {
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(5, new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("参数Runnable方法执行");
+            }
+        });
+        for (int i = 0; i < 5; i++) {
+            MyThread myThread = new MyThread(cyclicBarrier);
+            myThread.start();
+        }
+    }
+}
+
+class MyThread extends Thread {
+
+    private CyclicBarrier cyclicBarrier;
+
+    public MyThread(CyclicBarrier cyclicBarrier) {
+        this.cyclicBarrier = cyclicBarrier;
+    }
+
+    @Override
+    public void run() {
+        System.out.println("线程" + Thread.currentThread().getName() + ",正在写入数据");
+        Random random = new Random();
+        int i = random.nextInt(5);
+        try {
+            Thread.sleep(i * 1000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("线程" + Thread.currentThread().getName() + ",写入数据成功,耗时"+i+"秒.....");
+        try {
+            //等待执行cyclicBarrier.await()的线程等于设置的数量，所有线程才一起继续执行
+            cyclicBarrier.await();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("所有线程执行完毕..........");
+    }
+}
+```
+
