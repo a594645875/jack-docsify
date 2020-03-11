@@ -1,11 +1,11 @@
 # [Jackson's Java之旅](/)
 ## 最新文章
-- [更新dosify侧边栏和首页](/toolClass/更新dosify侧边栏和首页.md)
+- [Java多线程并发2——锁](/JavaBase/Java多线程并发2——锁.md)
 - [工作经验总结](/Other/工作经验总结.md)
+- [更新dosify侧边栏和首页](/toolClass/更新dosify侧边栏和首页.md)
 - [部署在docke容器中的软件没有按时运行](/bugs/部署在docke容器中的软件没有按时运行.md)
 - [TCP滑动窗口机制](/network/TCP滑动窗口机制.md)
 - [Java多线程并发1——线程实现和线程池](/JavaBase/Java多线程并发1——线程实现和线程池.md)
-- [Java多线程并发2——锁](/JavaBase/Java多线程并发2——锁.md)
 - [JVM学习笔记1——内存结构](/JavaBase/JVM学习笔记1——内存结构.md)
 - [JVM学习笔记2——垃圾回收](/JavaBase/JVM学习笔记2——垃圾回收.md)
 - [Java右移和无符号右移的区别](/JavaBase/Java右移和无符号右移的区别.md)
