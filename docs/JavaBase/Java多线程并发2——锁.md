@@ -1,4 +1,4 @@
-## 9. JAVA锁
+## JAVA锁
 
 参考文献: [JAVA锁有哪些种类](https://blog.csdn.net/nalanmingdian/article/details/77800355)
 

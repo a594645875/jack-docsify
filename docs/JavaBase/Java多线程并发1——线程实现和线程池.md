@@ -1,18 +1,18 @@
-## 1. JAVA并发包架构
+## JAVA并发包架构
 
 ![](..\image\线程基础并发包.png)
 
-## 2. 线程实现/创建方式
+## 线程实现/创建方式
 
-### 2.1 集成Thread类
-
-略
-
-### 2.2 实现Runnable接口
+### 集成Thread类
 
 略
 
-### 2.3 有返回值线程ExcutorService、Callable\<Class\>、Future
+### 实现Runnable接口
+
+略
+
+### 有返回值线程ExcutorService、Callable\<Class\>、Future
 
 ```java
 public class FutureTest {
@@ -53,7 +53,7 @@ class Mycallable implements Callable {
 }
 ```
 
-### 2.4 使用线程池
+### 使用线程池
 
 线程和数据库连接是非常珍贵的资源，频繁创建销毁很耗费性能。
 使用线程池可以尽可能减少线程的创建和销毁。
@@ -79,22 +79,22 @@ public class PoolTest {
 }
 ```
 
-## 3. 4种线程池
+## 种线程池
 
 Executor是线程池的顶级接口，但严格来说只是执行线程的工具，不是线程池。
 ExecutorService是真正的线程池接口。
 
 ![](..\image\线程池UML.png)
 
-### 3.1newCachedThreadPool 
+### newCachedThreadPool 
 
 调用 execute 将重用以前构造的线程（如果线程可用）。如果现有线程没有可用的，则创建一个新线程并添加到池中。终止并从缓存中移除那些已有 60 秒钟未被使用的线程。 
 
-### 3.2 newFixedThreadPool  
+### newFixedThreadPool  
 
 创建一个可重用固定线程数的线程池，以共享的无界队列方式来运行这些线程。如果在关闭前的执行期间由于失败而导致任何线程终止，那么一个新线程将代替它执行后续的任务（如果需要）。在某个线程被显式地关闭之前，池中的线程将一直存在。  
 
-### 3.3 newScheduledThreadPool  
+### newScheduledThreadPool  
 
 创建一个线程池，它可安排在给定延迟后运行命令或者定期地执行。
 
@@ -118,15 +118,15 @@ public class SchedulePoolTest {
 }
 ```
 
-### 3.4 newSingleThreadExecutor  
+### newSingleThreadExecutor  
 
 这个线程池只有一个线程 ,这个线程池可以在线程死后（或发生异常时）重新启动一个线程来替代原来的线程继续执行下去  
 
-## 4. 线程的生命周期
+## 线程的生命周期
 
 ![](..\image\线程的生命周期.png)
 
-## 5. 终止线程的4种方法
+## 终止线程的4种方法
 
 - 程序运行结束
 - 使用退出标志，打断循环（也就是使程序运行结束）
@@ -136,18 +136,18 @@ public class SchedulePoolTest {
 - 使用thread.stop()，线程不安全。强制释放锁，可能会导致数据被破坏线程安全
 - 
 
-## 6. sleep和wait区别
+## sleep和wait区别
 
 |       | 属于对象 |  锁  |       恢复       |
 | :---: | :------: | :--: | :--------------: |
 | sleep |  Thread  | 保持 |    设定时间后    |
 | wait  |  Object  | 释放 | 调用notify()方法 |
 
-## 7. start和run区别
+## start和run区别
 
 start开启一条线程，run在当前线程执行代码。
 
-## 8. 守护线程
+## 守护线程
 
 为用户线程提供公共服务，在没有用户线程可服务时会自动离开。  与系统“同生共死”。
 
