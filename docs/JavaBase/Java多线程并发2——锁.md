@@ -2,7 +2,7 @@
 
 参考文献: [JAVA锁有哪些种类](https://blog.csdn.net/nalanmingdian/article/details/77800355)
 
-### 9.1 锁分类
+### 锁分类
 
 这些分类并不是全是指锁的状态，有的指锁的特性，有的指锁的设计思想。
 
@@ -66,9 +66,9 @@
 
 分段锁的设计目的是细化锁的粒度，当操作不需要更新整个数组的时候，就仅仅针对数组中的一项进行加锁操作。例子：`ConcurrentHashMap`中的分段锁称为`Segment`，它即类似于`HashMap`（JDK7与JDK8中`HashMap`的实现）的结构，即内部拥有一个Entry数组，数组中的每个元素又是一个链表；同时又是一个`ReentrantLock`（Segment继承了`ReentrantLock`)。当需要put元素的时候，并不是对整个`hashmap`进行加锁，而是先通过`hashcode`来知道他要放在那一个分段中，然后对这个分段进行加锁，所以当多线程put的时候，只要不是放在一个分段中，就实现了真正的并行的插入
 
-### 9.2 常用锁
+### 常用锁
 
-#### 9.2.1 Synchronized
+#### Synchronized
 
 synchronized 它可以把任意一个非 NULL 的对象当作锁。 他属于独占式的悲观锁，同时属于可重
 入锁。
@@ -246,7 +246,7 @@ thread->7 get方法体结束
 ReentrantLock reentrantLock = new ReentrantLock(true);
 ```
 
-#### 9.2.3 ReadWriteLock
+#### ReadWriteLock
 
 Java并发包中ReadWriteLock是一个接口，主要有两个方法readLock()，writeLock()；
 
