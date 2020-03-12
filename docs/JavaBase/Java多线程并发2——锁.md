@@ -540,3 +540,57 @@ class MyThread extends Thread {
 }
 ```
 
+### Semaphore
+
+Semaphore是一种基于计数的信号量。它可以设定一个阈值，多个线程竞争获取许可信号，做自己的申请后归还，超过阈值后，线程申请许可信号将会被阻塞。
+
+Semaphore可以用来构建一些对象池，资源池之类的，比如数据库连接池。
+
+我们也可以创建计数为1的Semaphore，将其作为一种类似互斥锁的机制，这也叫二元信号量，表示两种互斥状态。
+
+```java
+public class SemaphoreTest {
+
+    public static void main(String[] args) {
+        //10个人上三个洗手间
+        Semaphore semaphore = new Semaphore(3);
+        for (int i = 0; i < 10; i++) {
+            new ThreadDemo001("第" + i + "个人", semaphore).start();
+        }
+    }
+}
+
+class ThreadDemo001 extends Thread {
+    private String name;
+    private Semaphore wc;
+
+    public ThreadDemo001(String name, Semaphore wc) {
+        this.name = name;
+        this.wc = wc;
+    }
+
+    @Override
+    public void run() {
+        //还有多少可用的资源
+        int availablePermits = wc.availablePermits();
+        if (availablePermits > 0) {
+            System.out.println("可以上洗手间了。。。");
+        } else {
+            System.out.println("没空闲的洗手间，继续忍着等一下吧。。。");
+        }
+
+        try {
+            //申请资源
+            wc.acquire();
+            System.out.println("终于可以上洗手间了...，剩下洗手间数量：" + wc.availablePermits());
+            Thread.sleep(new Random().nextInt(10)*1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("解决完了。。。");
+        //释放资源
+        wc.release();
+    }
+}
+```
+

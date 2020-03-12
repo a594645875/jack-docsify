@@ -79,7 +79,110 @@ public class PoolTest {
 }
 ```
 
-## 种线程池
+## 并发队列
+
+在并发队列上JDK提供了两套实现，一个是以ConcurrentLinkedQueue为代表的高性能队列非阻塞，一个是以BlockingQueue接口为代表的阻塞队列，无论哪种都继承自Queue。
+
+### 阻塞队列与非阻塞队
+
+阻塞队列与普通队列的区别在于，当队列是空的时，从队列中获取元素的操作将会被阻塞，或者当队列是满时，往队列里添加元素的操作会被阻塞，直到其他的线程使队列重新变得空闲起来，如从队列中移除一个或者多个元素，或者完全清空队列.
+1.ArrayDeque, （数组双端队列） 
+2.PriorityQueue, （优先级队列） 
+3.ConcurrentLinkedQueue, （基于链表的并发队列） 
+4.DelayQueue, （延期阻塞队列）（阻塞队列实现了BlockingQueue接口） 
+5.ArrayBlockingQueue, （基于数组的并发阻塞队列） 
+6.LinkedBlockingQueue, （基于链表的FIFO阻塞队列） 
+7.LinkedBlockingDeque, （基于链表的FIFO双端阻塞队列） 
+8.PriorityBlockingQueue, （带优先级的无界阻塞队列） 
+9.SynchronousQueue （并发同步阻塞队列）
+
+实战：使用BlockingQueue模拟生产者与消费者
+
+```java
+class ProducerThread implements Runnable {
+    private BlockingQueue<String> blockingQueue;
+    private AtomicInteger count = new AtomicInteger();
+    private volatile boolean flag = true;
+
+    public ProducerThread(BlockingQueue<String> blockingQueue) {
+        this.blockingQueue = blockingQueue;
+    }
+
+    @Override
+    public void run() {
+        while (flag) {
+            String data = this.count.incrementAndGet() + "";
+            try {
+                boolean offer = blockingQueue.offer(data, 2, TimeUnit.SECONDS);
+                if (offer) {
+                    System.out.println(Thread.currentThread().getName() + ",生产队列 " + data + "成功");
+                } else {
+                    System.out.println(Thread.currentThread().getName() + ",生产队列 " + data + "失败");
+                }
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println(Thread.currentThread().getName() + ",生产者线程停止...");
+    }
+
+    public void stop() {
+        this.flag = false;
+    }
+}
+
+class ConsumerThread implements Runnable {
+    private BlockingQueue<String> blockingQueue;
+    private volatile boolean flag = true;
+
+    public ConsumerThread(BlockingQueue<String> blockingQueue) {
+        this.blockingQueue = blockingQueue;
+    }
+
+    @Override
+    public void run() {
+        while (flag) {
+            String data = null;
+            try {
+                data = this.blockingQueue.poll(2, TimeUnit.SECONDS);
+                if (StringUtils.isEmpty(data)) {
+                    flag = false;
+                    System.out.println("消费者超过2秒未获得到消息,停止了");
+                    return;
+                }
+                System.out.println("消费者获得队列消息成功，data：" + data);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+public class BlockingQueueTest {
+
+    public static void main(String[] args) {
+        BlockingQueue<String> blockingQueue = new LinkedBlockingDeque<>(3);
+        ProducerThread producerThread = new ProducerThread(blockingQueue);
+        ConsumerThread consumerThread = new ConsumerThread(blockingQueue);
+        Thread t1 = new Thread(producerThread);
+        Thread t2 = new Thread(consumerThread);
+        t1.start();
+        t2.start();
+        try {
+            Thread.sleep(10*1000);
+            producerThread.stop();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
+}
+```
+
+
+
+## 4种线程池
 
 Executor是线程池的顶级接口，但严格来说只是执行线程的工具，不是线程池。
 ExecutorService是真正的线程池接口。
