@@ -79,6 +79,7 @@ public class PoolTest {
 }
 ```
 
+
 ## 并发队列
 
 在并发队列上JDK提供了两套实现，一个是以ConcurrentLinkedQueue为代表的高性能队列非阻塞，一个是以BlockingQueue接口为代表的阻塞队列，无论哪种都继承自Queue。
@@ -179,9 +180,6 @@ public class BlockingQueueTest {
     }
 }
 ```
-
-
-
 ## 4种线程池
 
 Executor是线程池的顶级接口，但严格来说只是执行线程的工具，不是线程池。
