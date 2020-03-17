@@ -1,4 +1,5 @@
 - [Java核心](/)
+	- [Disruptor并发框架](/JavaBase/Disruptor并发框架.md)
 	- [HashMap底层原理面试题](/JavaBase/HashMap底层原理面试题.md)
 	- [JDK8函数式编程](/JavaBase/JDK8函数式编程.md)
 	- [JDK9ReactiveStream](/JavaBase/JDK9ReactiveStream.md)
@@ -7,6 +8,7 @@
 	- [JVM学习笔记3——类加载](/JavaBase/JVM学习笔记3——类加载.md)
 	- [JVM深入理解-张龙](/JavaBase/JVM深入理解-张龙.md)
 	- [Java8获得特殊日期](/JavaBase/Java8获得特殊日期.md)
+	- [Java中queue和Deque的区别](/JavaBase/Java中queue和Deque的区别.md)
 	- [Java右移和无符号右移的区别](/JavaBase/Java右移和无符号右移的区别.md)
 	- [Java多线程并发1——线程实现和线程池](/JavaBase/Java多线程并发1——线程实现和线程池.md)
 	- [Java多线程并发2——锁](/JavaBase/Java多线程并发2——锁.md)
