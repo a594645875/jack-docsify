@@ -1,5 +1,4 @@
 - [Java核心](/)
-	- [Disruptor并发框架](/JavaBase/Disruptor并发框架.md)
 	- [HashMap底层原理面试题](/JavaBase/HashMap底层原理面试题.md)
 	- [JDK8函数式编程](/JavaBase/JDK8函数式编程.md)
 	- [JDK9ReactiveStream](/JavaBase/JDK9ReactiveStream.md)
@@ -15,3 +14,4 @@
 	- [java中的_=、&=、^=](/JavaBase/java中的_=、&=、^=.md)
 	- [值传递和地址传递问题](/JavaBase/值传递和地址传递问题.md)
 	- [成员变量和局部变量的区别](/JavaBase/成员变量和局部变量的区别.md)
+	- [静态代理和动态代理](/JavaBase/静态代理和动态代理.md)

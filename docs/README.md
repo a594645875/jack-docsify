@@ -1,8 +1,8 @@
 # [Jackson's Java之旅](/)
 ## 最新文章
+- [静态代理和动态代理](/JavaBase/静态代理和动态代理.md)
 - [Java多线程并发1——线程实现和线程池](/JavaBase/Java多线程并发1——线程实现和线程池.md)
 - [JVM学习笔记1——内存结构](/JavaBase/JVM学习笔记1——内存结构.md)
-- [Disruptor并发框架](/JavaBase/Disruptor并发框架.md)
 - [Java中queue和Deque的区别](/JavaBase/Java中queue和Deque的区别.md)
 - [Java多线程并发2——锁](/JavaBase/Java多线程并发2——锁.md)
 - [JVM学习笔记2——垃圾回收](/JavaBase/JVM学习笔记2——垃圾回收.md)
