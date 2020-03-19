@@ -1,5 +1,6 @@
 # [Jackson's Java之旅](/)
 ## 最新文章
+- [手写系列-Spring事务](/PopularFrameworks/手写系列-Spring事务.md)
 - [静态代理和动态代理](/JavaBase/静态代理和动态代理.md)
 - [Java多线程并发1——线程实现和线程池](/JavaBase/Java多线程并发1——线程实现和线程池.md)
 - [JVM学习笔记1——内存结构](/JavaBase/JVM学习笔记1——内存结构.md)
