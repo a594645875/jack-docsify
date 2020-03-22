@@ -1,6 +1,6 @@
 ###   UML单体结构
 
-![](https://note.youdao.com/yws/public/resource/7d5f5a54817709d3d217939bd99c5806/xmlnote/D13A3AE7E5E848FA946F95A82893408E/889)
+![](..\image\UML\UML单体结构.png)
 
 由上至下: 类名,属性,行为    
 GeelyClass: 类型,抽象类为斜体,接口的话前面有<<interface>>    
@@ -16,7 +16,7 @@ String,double: 类型
 
 ### UML相互依赖图
 
-![](https://note.youdao.com/yws/public/resource/7d5f5a54817709d3d217939bd99c5806/xmlnote/590C0F662E84409595B8EEA0D39536B8/892)
+![](..\image\UML\UML相互依赖图.png)
 
 依赖关系: 虚线(辅助记忆:虚无缥缈)  
 关联关系: 实线(辅助记忆:实线,实打实的关系,铁哥们)  

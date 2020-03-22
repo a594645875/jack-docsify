@@ -1,5 +1,7 @@
 # [Jackson's Java之旅](/)
-## 最新文章
+## 全部笔记
+- [UML结构详解](/Other/UML结构详解.md)
+- [23种设计模式及其结构图](/Other/23种设计模式及其结构图.md)
 - [手写系列-SpringIOC容器](/PopularFrameworks/手写系列-SpringIOC容器.md)
 - [手写系列-Spring事务](/PopularFrameworks/手写系列-Spring事务.md)
 - [静态代理和动态代理](/JavaBase/静态代理和动态代理.md)
@@ -95,9 +97,7 @@
 - [JVM深入理解-张龙](/JavaBase/JVM深入理解-张龙.md)
 - [值传递和地址传递问题](/JavaBase/值传递和地址传递问题.md)
 - [7大设计原则](/Other/7大设计原则.md)
-- [UML结构详解](/Other/UML结构详解.md)
 - [单例模式特辑](/Other/单例模式特辑.md)
-- [设计模式概念](/Other/设计模式概念.md)
 - [Dubbo开启高速序列化](/PopularFrameworks/Dubbo开启高速序列化.md)
 - [Dubbo管理中心搭建](/PopularFrameworks/Dubbo管理中心搭建.md)
 - [Dubbo结合熔断器Hystrix](/PopularFrameworks/Dubbo结合熔断器Hystrix.md)
