@@ -12,11 +12,22 @@
 
 总结：
 
-filter：和框架无关，可以控制最初的http请求，但是更细一点的类和方法控制不了。
+filter：和框架无关，可以控制最初的http请求，但是更细一点的类和方法控制不了，颗粒度比较粗
 
 interceptor：可以控制请求的控制器和方法，但控制不了请求方法里的参数。 
 
-aspect : 可以自定义切入的点，有方法的参数，但是拿不到http请求，可以通过其他方式如RequestContextHolder获得。
+aspect : 可以自定义切入的点，有方法的参数，但是拿不到http请求，颗粒度最细
+
+controllerAdvice：所有的controller方法都会进行处理，通常用过全局异常处理
+
+拿不到http请求的可以通过RequestContextHolder的方式获取：
+
+```java
+ServletRequestAttributes requestAttributes = (ServletRequestAttributes)RequestContextHolder.getRequestAttributes();
+
+// 获取 request
+HttpServletRequest request = requestAttributes.getRequest();
+```
 
 ![](..\image\过滤器区别.png)
 
