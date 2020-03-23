@@ -1,7 +1,6 @@
 # [Jackson's Java之旅](/)
 ## 全部笔记
 - [微信小程序解密encryptedData报错](/bugs/微信小程序解密encryptedData报错.md)
-- [手写系列-SpringMVC](/PopularFrameworks/手写系列-SpringMVC.md)
 - [spring的Aspect，Filter、Interceptor、ControllerAdvice区别](/PopularFrameworks/spring的Aspect，Filter、Interceptor、ControllerAdvice区别.md)
 - [SpringBoot配置启动,加载,敏感字段加密](/PopularFrameworks/SpringBoot配置启动,加载,敏感字段加密.md)
 - [更新dosify侧边栏和首页](/toolClass/更新dosify侧边栏和首页.md)
