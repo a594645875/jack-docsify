@@ -1,3 +1,3 @@
-- [¹¤¾ßÀà](/)
-	- [JavaÉèÖÃÈ«¾Ö¿ÉÓÃµÄ¶¯Ì¬²ÎÊý](/toolClass/JavaÉèÖÃÈ«¾Ö¿ÉÓÃµÄ¶¯Ì¬²ÎÊý.md)
-	- [¸üÐÂdosify²à±ßÀ¸ºÍÊ×Ò³](/toolClass/¸üÐÂdosify²à±ßÀ¸ºÍÊ×Ò³.md)
+- [å·¥å…·ç±»](/)
+	- [Javaè®¾ç½®å…¨å±€å¯ç”¨çš„åŠ¨æ€å‚æ•°](/toolClass/Javaè®¾ç½®å…¨å±€å¯ç”¨çš„åŠ¨æ€å‚æ•°.md)
+	- [æ›´æ–°dosifyä¾§è¾¹æ å’Œé¦–é¡µ](/toolClass/æ›´æ–°dosifyä¾§è¾¹æ å’Œé¦–é¡µ.md)

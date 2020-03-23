@@ -1,2 +1,2 @@
-- [前端](/)
-	- [Vue之vue-cli安装](/FrontEnd/Vue之vue-cli安装.md)
+- [鍓嶇](/)
+	- [Vue涔媣ue-cli瀹夎](/FrontEnd/Vue涔媣ue-cli瀹夎.md)

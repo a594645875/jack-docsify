@@ -1,2 +1,2 @@
-- [分布式架构](/)
-	- [JTA多数据源的分布式事务解决方案](/DistributedArchitecture/JTA多数据源的分布式事务解决方案.md)
+- [鍒嗗竷寮忔灦鏋刔(/)
+	- [JTA澶氭暟鎹簮鐨勫垎甯冨紡浜嬪姟瑙ｅ喅鏂规](/DistributedArchitecture/JTA澶氭暟鎹簮鐨勫垎甯冨紡浜嬪姟瑙ｅ喅鏂规.md)
