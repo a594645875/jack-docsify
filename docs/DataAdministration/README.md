@@ -1,4 +1,4 @@
-- [æ•°æ®ç®¡ç†](/)
-	- [Mysqlä¼˜åŒ–](/DataAdministration/Mysqlä¼˜åŒ–.md)
-	- [Redisæ­å»ºRedis-Sentinelé«˜å¯ç”¨é›†ç¾¤](/DataAdministration/Redisæ­å»ºRedis-Sentinelé«˜å¯ç”¨é›†ç¾¤.md)
-	- [åè¡Œä»£ç æµ‹è¯•è¿æ¥æ•°æ®åº“](/DataAdministration/åè¡Œä»£ç æµ‹è¯•è¿æ¥æ•°æ®åº“.md)
+- [Êı¾İ¹ÜÀí](/)
+	- [MysqlÓÅ»¯](/DataAdministration/MysqlÓÅ»¯.md)
+	- [Redis´î½¨Redis-Sentinel¸ß¿ÉÓÃ¼¯Èº](/DataAdministration/Redis´î½¨Redis-Sentinel¸ß¿ÉÓÃ¼¯Èº.md)
+	- [Ê®ĞĞ´úÂë²âÊÔÁ¬½ÓÊı¾İ¿â](/DataAdministration/Ê®ĞĞ´úÂë²âÊÔÁ¬½ÓÊı¾İ¿â.md)
