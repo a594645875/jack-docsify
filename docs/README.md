@@ -1,9 +1,9 @@
 # [Jackson's Java之旅](/)
 ## 全部笔记
+- [微信小程序解密encryptedData报错](/bugs/微信小程序解密encryptedData报错.md)
 - [手写系列-SpringMVC](/PopularFrameworks/手写系列-SpringMVC.md)
 - [spring的Aspect，Filter、Interceptor、ControllerAdvice区别](/PopularFrameworks/spring的Aspect，Filter、Interceptor、ControllerAdvice区别.md)
 - [SpringBoot配置启动,加载,敏感字段加密](/PopularFrameworks/SpringBoot配置启动,加载,敏感字段加密.md)
-- [微信小程序解密encryptedData 报错：pad block corrupted ](/bugs/微信小程序解密encryptedData 报错：pad block corrupted .md)
 - [更新dosify侧边栏和首页](/toolClass/更新dosify侧边栏和首页.md)
 - [23种设计模式及其结构图](/Other/23种设计模式及其结构图.md)
 - [UML结构详解](/Other/UML结构详解.md)

@@ -32,6 +32,6 @@
 	- [使用prod部署到服务器的zipkin一直没能注册到eureka](/bugs/使用prod部署到服务器的zipkin一直没能注册到eureka.md)
 	- [初始化仓库的时候,两个仓库分支无法合并](/bugs/初始化仓库的时候,两个仓库分支无法合并.md)
 	- [引用SpringCouldconfiguration的时候,启动服务报错](/bugs/引用SpringCouldconfiguration的时候,启动服务报错.md)
-	- [微信小程序解密encryptedData 报错：pad block corrupted ](/bugs/微信小程序解密encryptedData 报错：pad block corrupted .md)
+	- [微信小程序解密encryptedData报错](/bugs/微信小程序解密encryptedData报错.md)
 	- [无数据库配置时Springboot无法启动](/bugs/无数据库配置时Springboot无法启动.md)
 	- [部署在docke容器中的软件没有按时运行](/bugs/部署在docke容器中的软件没有按时运行.md)
