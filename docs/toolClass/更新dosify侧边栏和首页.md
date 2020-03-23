@@ -1,15 +1,20 @@
 ```java
 public class DocsifyAuto {
 
+    private static final String DOC_PATH = "C:\\Users\\chenzecheng\\Desktop\\document\\study\\jack-docsify\\docs";
+
     public static void main(String[] args) throws IOException {
-        String rootPath = "/Users/jackson/Documents/study/jack-docsify/docs";
-        File file = new File(rootPath);
+        File file = new File(DOC_PATH);
         File[] array = file.listFiles();
         if (array == null) {
             return;
         }
         List<IndexMsg> indexMsgs = new ArrayList<>();
         for (File subfile : array) {
+            //忽略的文件夹
+            if ("image".equals(subfile.getName())) {
+                continue;
+            }
             if ("unfinish".equals(subfile.getName())) {
                 continue;
             }
@@ -17,14 +22,12 @@ public class DocsifyAuto {
             if (subfile.isDirectory()) {
                 //更新每个文件夹的侧边栏和主页
                 recreateSidebar(subfile,indexMsgs);
-
                 //reNameFile(subfile);
-
             }
         }
         System.out.println("更新侧边栏和主页完成。");
         //拼接首页Index，文章列表
-        reflashIndex(rootPath,indexMsgs);
+        reflashIndex(DOC_PATH,indexMsgs);
         System.out.println("更新主页最新文章完成。");
     }
 
@@ -32,7 +35,7 @@ public class DocsifyAuto {
         String path = rootPath + "/README.md";
         StringBuilder builder = new StringBuilder();
         builder.append("# [Jackson's Java之旅](/)\n");
-        builder.append("## 最新文章\n");
+        builder.append("## 全部笔记\n");
         List<IndexMsg> collect = indexMsgs.stream().sorted(Comparator.comparing(IndexMsg::getLastModify).reversed()).collect(Collectors.toList());
         collect.forEach(x -> builder.append("- [").append(x.getDocName().replace(".md", ""))
                 .append("](/").append(x.getDirName()).append("/").append(x.getDocName()).append(")\n"));
